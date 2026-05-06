@@ -1,0 +1,189 @@
+{
+  "name": "web-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/web-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/web-app",
+        "browser": "apps/web-app/src/main.ts",
+        "tsConfig": "apps/web-app/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/web-app/public"
+          }
+        ],
+        "styles": ["apps/web-app/src/styles.css"],
+        "server": "apps/web-app/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/web-app/src/server.ts"
+        },
+        "outputMode": "server"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/web-app/src/environments/environment.development.ts",
+              "with": "apps/web-app/src/environments/environment.production.ts"
+            }
+          ]
+        },
+        "qa": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/web-app/src/environments/environment.development.ts",
+              "with": "apps/web-app/src/environments/environment.qa.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "build-spa": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/web-app",
+        "browser": "apps/web-app/src/main.ts",
+        "tsConfig": "apps/web-app/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/web-app/public"
+          }
+        ],
+        "styles": ["apps/web-app/src/styles.css"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/web-app/src/environments/environment.development.ts",
+              "with": "apps/web-app/src/environments/environment.production.ts"
+            }
+          ]
+        },
+        "qa": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/web-app/src/environments/environment.development.ts",
+              "with": "apps/web-app/src/environments/environment.qa.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "development": {
+          "buildTarget": "web-app:build:development"
+        },
+        "qa": {
+          "buildTarget": "web-app:build:qa"
+        },
+        "production": {
+          "buildTarget": "web-app:build:production"
+        },
+        "development-no-ssr": {
+          "buildTarget": "web-app:build-spa:development"
+        },
+        "qa-no-ssr": {
+          "buildTarget": "web-app:build-spa:qa"
+        },
+        "production-no-ssr": {
+          "buildTarget": "web-app:build-spa:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {}
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "web-app:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/web-app/browser",
+        "spa": true
+      }
+    }
+  }
+}

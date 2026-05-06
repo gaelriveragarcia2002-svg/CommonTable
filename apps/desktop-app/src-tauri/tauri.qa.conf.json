@@ -1,0 +1,13 @@
+{
+  "build": {
+    "devUrl": "http://localhost:4200",
+    "beforeDevCommand": "nx serve desktop-app --configuration=qa"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Desktop App - QA"
+      }
+    ]
+  }
+}

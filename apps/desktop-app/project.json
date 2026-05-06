@@ -1,0 +1,145 @@
+{
+  "name": "desktop-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/desktop-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/desktop-app",
+        "browser": "apps/desktop-app/src/main.ts",
+        "tsConfig": "apps/desktop-app/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/desktop-app/public"
+          }
+        ],
+        "styles": [
+          "apps/desktop-app/src/styles.css"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/desktop-app/src/environments/environment.development.ts",
+              "with": "apps/desktop-app/src/environments/environment.production.ts"
+            }
+          ]
+        },
+        "qa": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/desktop-app/src/environments/environment.development.ts",
+              "with": "apps/desktop-app/src/environments/environment.qa.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/desktop-app/src/environments/environment.development.ts",
+              "with": "apps/desktop-app/src/environments/environment.development.ts"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "desktop-app:build:production"
+        },
+        "qa": {
+          "buildTarget": "desktop-app:build:qa"
+        },
+        "development": {
+          "buildTarget": "desktop-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {}
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "desktop-app:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/desktop-app/browser",
+        "spa": true
+      }
+    },
+
+    "tauri-dev": {
+      "command": "npx tauri dev",
+      "dependsOn": ["serve"],
+      "options": {
+        "cwd": "apps/desktop-app"
+      },
+      "configurations": {
+        "dev": {
+          "args": "--config src-tauri/tauri.development.conf.json"
+        },
+        "qa": {
+          "args": "--config src-tauri/tauri.qa.conf.json"
+        },
+        "production": {
+          "args": "--config src-tauri/tauri.prod.conf.json"
+        }
+    }
+    },
+
+    "tauri-build": {
+      "command": "npx tauri build",
+      "options": {
+        "cwd": "apps/desktop-app"
+      }
+    }
+  }
+}
