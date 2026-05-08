@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
+import { TestComponent } from '@org/shared';
 
 @Component({
-  imports: [NxWelcome, RouterModule],
+  imports: [RouterModule, TestComponent],
   selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
+  template: `
+    <div>
+      <p>Hola Mundo</p>
+      <lib-test></lib-test>
+    </div>
+  `,
 })
 export class App {
   protected title = 'desktop-app';

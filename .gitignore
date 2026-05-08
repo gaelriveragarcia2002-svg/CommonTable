@@ -57,3 +57,5 @@ test-output
 .env
 .env.*
 !.env.example
+
+vitest.config.*.timestamp*

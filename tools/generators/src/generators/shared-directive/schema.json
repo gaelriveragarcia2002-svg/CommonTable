@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "SharedDirective",
+  "title": "Genera una directiva standalone en libs/shared",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Nombre de la directiva",
+      "$default": { "$source": "argv", "index": 0 },
+      "x-prompt": "¿Nombre de la directiva?"
+    },
+  },
+  "required": ["name"]
+}

@@ -1,0 +1,19 @@
+{
+  "generators": {
+    "shared-component": {
+      "factory": "./src/generators/shared-component/shared-component",
+      "schema": "./src/generators/shared-component/schema.json",
+      "description": "Genera un componente standalone en libs/shared"
+    },
+    "shared-pipe": {
+      "factory": "./src/generators/shared-pipe/shared-pipe",
+      "schema": "./src/generators/shared-pipe/schema.json",
+      "description": "Genera un pipe standalone en libs/shared"
+    },
+    "shared-directive": {
+      "factory": "./src/generators/shared-directive/shared-directive",
+      "schema": "./src/generators/shared-directive/schema.json",
+      "description": "Genera una directiva standalone en libs/shared"
+    }
+  }
+}

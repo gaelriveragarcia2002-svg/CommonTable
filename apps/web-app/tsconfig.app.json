@@ -2,8 +2,22 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"]
+    "rootDir": "../../",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES2022",
+      "dom",
+      "dom.iterable"
+    ]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
+  "include": [
+    "src/**/*.ts",
+    "../../libs/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }
