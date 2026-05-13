@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "preview:ssr": "pnpm nx run web-app:build --localize --skip-nx-cache && NG_ALLOWED_HOSTS=localhost node dist/apps/web-app/server/server.mjs",
+    "preview:spa": "pnpm nx run web-app:build-spa --localize --skip-nx-cache && npx serve dist/apps/web-app/browser",
     "web:dev": "nx serve web-app",
     "web:dev:no-ssr": "nx serve web-app --configuration=development-no-ssr",
     "web:qa": "nx serve web-app --configuration=qa",
@@ -13,7 +15,8 @@
     "desktop:dev": "nx run desktop-app:tauri-dev",
     "desktop:qa": "nx run desktop-app:tauri-dev:qa",
     "desktop:production": "nx run desktop-app:tauri-dev:production",
-    "build:all": "nx run-many -t build --all"
+    "build:all": "nx run-many -t build --all",
+    "i18n:extract": "nx run-many -t extract-i18n --parallel=1 && node scripts/i18n-merge.mjs"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +25,7 @@
     "@angular/compiler": "~21.2.0",
     "@angular/core": "~21.2.0",
     "@angular/forms": "~21.2.0",
+    "@angular/localize": "^21.2.12",
     "@angular/platform-browser": "~21.2.0",
     "@angular/platform-server": "~21.2.0",
     "@angular/router": "~21.2.0",

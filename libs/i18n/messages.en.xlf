@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es" target-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5107337008290724842" datatype="html">
+        <source> Buenos días, <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;text-primary-500 font-semibold&quot;&gt;"/>Gael<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target state="new"> Good morning, <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;text-primary-500 font-semibold&quot;&gt;"/>Gael<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/shared/src/lib/components/layout/navbar.component.ts</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2908229499206436218" datatype="html">
+        <source>Luna</source>
+        <target state="new">Moon</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/shared/src/lib/components/layout/navbar.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2376039533316366450" datatype="html">
+        <source> Jugar </source>
+        <target state="new"> Jugar </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/shared/src/lib/components/layout/sidebar.component.ts</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

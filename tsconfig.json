@@ -4,16 +4,25 @@
   "files": [],
   "references": [
     {
-      "path": "./my-app-e2e"
-    },
-    {
-      "path": "./apps/desktop-app-e2e"
-    },
-    {
       "path": "./apps/desktop-app-e2e"
     },
     {
       "path": "./tools/generators"
+    },
+    {
+      "path": "./apps/desktop-app"
+    },
+    {
+      "path": "./apps/web-app-e2e"
+    },
+    {
+      "path": "./apps/web-app"
+    },
+    {
+      "path": "./libs/shared"
+    },
+    {
+      "path": "./libs/core"
     }
   ]
 }

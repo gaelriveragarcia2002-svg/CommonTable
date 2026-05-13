@@ -5,6 +5,22 @@
   "prefix": "app",
   "sourceRoot": "apps/web-app/src",
   "tags": [],
+  // TODO: Al agregar un nuevo idioma:
+  // 1. Añadir entrada aquí con el código de locale (ej: "de", "pt", "it")
+  // 2. Crear libs/i18n/messages.<locale>.xlf copiando la estructura de messages.en.xlf
+  // 3. Agregar configuración "fr"/"de"/etc. en build.configurations y serve.configurations
+  // 4. Actualizar SUPPORTED_LOCALES en scripts/i18n-merge.mjs
+  "i18n": {
+    "sourceLocale": "es",
+    "locales": {
+      "en": {
+        "translation": "libs/i18n/messages.en.xlf"
+      },
+      "fr": {
+        "translation": "libs/i18n/messages.fr.xlf"
+      }
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular/build:application",
@@ -27,10 +43,16 @@
         "ssr": {
           "entry": "apps/web-app/src/server.ts"
         },
+        "polyfills": ["@angular/localize/init"],
         "outputMode": "server"
+        // TODO (producción): Agregar bloque "security" cuando tengas el dominio final:
+        // "security": { "allowedHosts": ["tudominio.com"] }
+        // Esto previene ataques SSRF a nivel de build (alternativa a NG_ALLOWED_HOSTS en runtime).
       },
       "configurations": {
         "production": {
+          // TODO: Revisar budgets antes de cada release. Si el bundle supera el límite
+          // el build fallará. Aumentar maximumError solo si hay justificación (librerías pesadas).
           "budgets": [
             {
               "type": "initial",
@@ -43,6 +65,8 @@
               "maximumError": "8kb"
             }
           ],
+          // TODO (producción): Cuando el proyecto esté listo para i18n en prod,
+          // agregar "localize": true aquí para buildear todos los locales en producción.
           "outputHashing": "all",
           "fileReplacements": [
             {
@@ -52,6 +76,8 @@
           ]
         },
         "qa": {
+          // TODO (qa): Mismo criterio que producción para budgets.
+          // Considerar bajar los límites en QA para detectar problemas antes de producción.
           "budgets": [
             {
               "type": "initial",
@@ -75,7 +101,11 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "localize": false
+        },
+        "en": {
+          "localize": ["en"]
         }
       },
       "defaultConfiguration": "production"
@@ -87,6 +117,7 @@
         "outputPath": "dist/apps/web-app",
         "browser": "apps/web-app/src/main.ts",
         "tsConfig": "apps/web-app/tsconfig.app.json",
+        "polyfills": ["@angular/localize/init"],
         "assets": [
           {
             "glob": "**/*",
@@ -170,9 +201,21 @@
         },
         "production-no-ssr": {
           "buildTarget": "web-app:build-spa:production"
+        },
+        "en": {
+          "buildTarget": "web-app:build:development,en"
         }
       },
       "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n",
+      "options": {
+        "buildTarget": "web-app:build",
+        "outputPath": "libs/i18n",
+        "outFile": "messages.xlf",
+        "format": "xlf"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"

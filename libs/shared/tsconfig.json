@@ -20,9 +20,6 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "../core/tsconfig.lib.json"
     }
   ]
 }

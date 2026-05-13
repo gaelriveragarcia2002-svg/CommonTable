@@ -5,12 +5,23 @@
   "prefix": "app",
   "sourceRoot": "apps/desktop-app/src",
   "tags": [],
+  // TODO: Al agregar un nuevo idioma, replicar los mismos pasos que en web-app/project.json.
+  // Ambas apps deben mantenerse sincronizadas en locales.
+  "i18n": {
+    "sourceLocale": "es",
+    "locales": {
+      "en": {
+        "translation": "libs/i18n/messages.en.xlf"
+      },
+      "fr": {
+        "translation": "libs/i18n/messages.fr.xlf"
+      }
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/desktop-app",
         "browser": "apps/desktop-app/src/main.ts",
@@ -21,12 +32,13 @@
             "input": "apps/desktop-app/public"
           }
         ],
-        "styles": [
-          "apps/desktop-app/src/styles.css"
-        ]
+        "polyfills": ["@angular/localize/init"],
+        "styles": ["apps/desktop-app/src/styles.css"]
       },
       "configurations": {
         "production": {
+          // TODO: Revisar budgets antes de cada release de Tauri.
+          // El bundle del desktop puede ser más grande por las dependencias nativas.
           "budgets": [
             {
               "type": "initial",
@@ -39,6 +51,8 @@
               "maximumError": "8kb"
             }
           ],
+          // TODO (producción): Agregar "localize": true cuando el i18n esté completo
+          // para incluir todos los locales en el build de producción de Tauri.
           "outputHashing": "all",
           "fileReplacements": [
             {
@@ -48,6 +62,7 @@
           ]
         },
         "qa": {
+          // TODO (qa): Considerar bajar budgets en QA para detectar regressions antes de producción.
           "budgets": [
             {
               "type": "initial",
@@ -72,12 +87,16 @@
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true,
+          "localize": false,
           "fileReplacements": [
             {
               "replace": "apps/desktop-app/src/environments/environment.development.ts",
               "with": "apps/desktop-app/src/environments/environment.development.ts"
             }
           ]
+        },
+        "en": {
+          "localize": ["en"]
         }
       },
       "defaultConfiguration": "development"
@@ -94,9 +113,21 @@
         },
         "development": {
           "buildTarget": "desktop-app:build:development"
+        },
+        "en": {
+          "buildTarget": "desktop-app:build:development,en"
         }
       },
       "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n",
+      "options": {
+        "buildTarget": "desktop-app:build",
+        "outputPath": "libs/i18n",
+        "outFile": "messages.xlf",
+        "format": "xlf"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
@@ -132,7 +163,7 @@
         "production": {
           "args": "--config src-tauri/tauri.prod.conf.json"
         }
-    }
+      }
     },
 
     "tauri-build": {

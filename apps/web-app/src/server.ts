@@ -12,6 +12,10 @@ const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
+
+// TODO (producción): Configurar `NG_ALLOWED_HOSTS` en las variables de entorno
+// del servidor con el dominio real, ej: NG_ALLOWED_HOSTS=tudominio.com
+// Esto previene ataques SSRF. Nunca dejar localhost en producción.
 const angularApp = new AngularNodeAppEngine();
 
 /**
@@ -87,6 +91,8 @@ app.use('/**', (req, res, next) => {
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
+  // TODO (producción/qa): El PORT debe venir de la variable de entorno del servidor
+  // de despliegue (Railway, Render, AWS, etc). No hardcodear 4000 en producción.
   const port = process.env['PORT'] || 4000;
   app.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);

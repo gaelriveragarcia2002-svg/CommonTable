@@ -3,10 +3,18 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "lib": ["ES2022", "dom", "dom.iterable"],
-    "types": [],
+    "types": ["@angular/localize"],
     "rootDir": "../../",
     "composite": false
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
+  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"],
+  "references": [
+    {
+      "path": "../../libs/shared/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/core/tsconfig.lib.json"
+    }
+  ]
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TooltipModule } from 'primeng/tooltip';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -26,9 +27,15 @@ import { CommonModule } from '@angular/common';
       <hr class="border-dashed border-[1.5px] border-primary-400" />
     </div>
     <div id="sidebar-content" class="w-full flex flex-col gap-2">
-      <p class="w-full flex justify-start items-center font-serif">Jugar</p>
+      <p
+        i18n
+        class="w-full justify-start items-center font-serif text-xs hidden xl:block"
+      >
+        Jugar
+      </p>
       @for (v of MAIN_ROUTES; track $index) {
         <div
+          [pTooltip]="v.title"
           class="bg-primary-900 min-h-10 min-w-10 flex items-center justify-center xl:justify-start text-primary-100 hover:bg-primary-800 hover:cursor-pointer transition-all duration-200 ease-in-out px-4 py-1 rounded-lg"
         >
           <p class="flex gap-2 items-center justify-center xl:justify-start">
@@ -40,7 +47,7 @@ import { CommonModule } from '@angular/common';
     </div>
     <div id="sidebar-end"></div>
   </aside>`,
-  imports: [CommonModule],
+  imports: [CommonModule, TooltipModule],
 })
 export class SideBarComponent {
   //   public readonly _EnvironmentService = inject(EnvironmentService);

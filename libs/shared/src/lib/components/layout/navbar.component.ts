@@ -18,9 +18,10 @@ import { EnvironmentService } from '../../services/environment.service';
     >
       <!-- Start: saludo -->
       <div class="hidden sm:block shrink-0">
-        <p class="text-base leading-tight">
+        <p i18n class="text-base leading-tight">
           Buenos días, <span class="text-primary-500 font-semibold">Gael</span>
         </p>
+        <p i18n>Luna</p>
       </div>
 
       <!-- Center: links (reservado) -->
