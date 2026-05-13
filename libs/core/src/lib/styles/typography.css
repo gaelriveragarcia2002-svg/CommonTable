@@ -1,0 +1,157 @@
+/* Fuente — Kanit (pesos utilizados por los font-weight tokens) */
+@import '@fontsource/kanit/300.css';
+@import '@fontsource/kanit/400.css';
+@import '@fontsource/kanit/500.css';
+@import '@fontsource/kanit/600.css';
+@import '@fontsource/kanit/700.css';
+@import '@fontsource/kanit/900.css';
+
+/* Textos responsivos — escala fluida con clamp() */
+:root {
+  --step--1: clamp(0.7813rem, 0.7529rem + 0.1261vw, 0.8594rem);
+  --step-0:  clamp(0.9375rem, 0.8352rem + 0.4545vw, 1.1875rem);
+  --step-1:  clamp(1.125rem,  0.978rem  + 0.6534vw, 1.4844rem);
+  --step-2:  clamp(1.35rem,   1.1432rem + 0.919vw,  1.8555rem);
+  --step-3:  clamp(1.62rem,   1.3339rem + 1.2715vw, 2.3193rem);
+  --step-4:  clamp(1.944rem,  1.5532rem + 1.7367vw, 2.8992rem);
+  --step-5:  clamp(2.3328rem, 1.8046rem + 2.3476vw, 3.624rem);
+  --step-6:  clamp(2.7994rem, 2.0914rem + 3.1465vw, 4.53rem);
+  --step-7:  clamp(3.3592rem, 2.417rem  + 4.1877vw, 5.6624rem);
+  --step-8:  clamp(4.0311rem, 2.7846rem + 5.54vw,   7.0781rem);
+  --step-9:  clamp(4.8373rem, 3.1967rem + 7.2914vw, 8.8476rem);
+  --step-10: clamp(5.8048rem, 3.6551rem + 9.554vw,  11.0595rem);
+}
+
+/* Sobreescritura de tokens de Tailwind CSS */
+@theme {
+  /* ─── Tipografía — tamaños ─────────────────────────── */
+  --text-2xs:  var(--step--1);
+  --text-xs:   var(--step-0);
+  --text-sm:   var(--step-1);
+  --text-base: var(--step-2);
+  --text-lg:   var(--step-3);
+  --text-xl:   var(--step-4);
+  --text-2xl:  var(--step-5);
+  --text-3xl:  var(--step-6);
+  --text-4xl:  var(--step-7);
+  --text-5xl:  var(--step-8);
+  --text-6xl:  var(--step-9);
+  --text-7xl:  var(--step-10);
+
+  /* ─── Tipografía — familias ────────────────────────── */
+  --font-sans:  'Kanit', ui-sans-serif, system-ui, -apple-system,
+                BlinkMacSystemFont, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Monaco,
+                Consolas, 'Liberation Mono', 'Courier New', monospace;
+  /* uso: font-sans  font-serif  font-mono */
+
+  /* ─── Tipografía — pesos ───────────────────────────── */
+  --font-weight-light:    300;
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+  /* uso: font-light  font-normal  font-medium  font-semibold  font-bold  font-black */
+
+  /* ─── Tipografía — interlineado ────────────────────── */
+  --leading-none:    1;
+  --leading-tight:   1.25;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose:   2;
+  /* uso: leading-none  leading-tight  leading-snug  leading-normal  leading-relaxed  leading-loose */
+
+  /* ─── Tipografía — espaciado entre letras ──────────── */
+  --tracking-tighter: -0.05em;
+  --tracking-tight:   -0.025em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.025em;
+  --tracking-wider:    0.05em;
+  --tracking-widest:   0.1em;
+  /* uso: tracking-tighter  tracking-tight  tracking-normal  tracking-wide  tracking-wider  tracking-widest */
+}
+
+/* Capa base — estilos globales de elementos HTML */
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+    overscroll-behavior: none;
+  }
+
+  body {
+    font-family:              var(--font-sans);
+    font-size:                var(--step-0);
+    line-height:              var(--leading-normal);
+    color:                    var(--p-text-color);
+    background-color:         var(--p-surface-50);
+    -webkit-font-smoothing:   antialiased;
+    -moz-osx-font-smoothing:  grayscale;
+  }
+
+  h1 {
+    font-size:   var(--step-5);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tight);
+  }
+
+  h2 {
+    font-size:   var(--step-4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tight);
+  }
+
+  h3 {
+    font-size:   var(--step-3);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-snug);
+  }
+
+  h4 {
+    font-size:   var(--step-2);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-snug);
+  }
+
+  h5 {
+    font-size:   var(--step-1);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-normal);
+  }
+
+  h6 {
+    font-size:   var(--step-0);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--leading-normal);
+  }
+
+  p {
+    font-size:   var(--step-0);
+    line-height: var(--leading-relaxed);
+  }
+
+  small {
+    font-size: var(--step--1);
+  }
+
+  a {
+    color:           var(--p-primary-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--p-transition-duration) ease;
+  }
+
+  a:hover {
+    color: var(--p-primary-hover-color);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size:   0.9em;
+    background:  var(--p-surface-100);
+    padding:     0.1em 0.35em;
+    border-radius: var(--p-border-radius-sm);
+  }
+}

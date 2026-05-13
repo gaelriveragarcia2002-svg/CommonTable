@@ -8,11 +8,13 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import { provideCommonTable } from '@org/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
+    provideCommonTable(),
   ],
 };

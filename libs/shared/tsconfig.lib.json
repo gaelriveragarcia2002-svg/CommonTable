@@ -8,6 +8,11 @@
     "types": []
   },
   "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../core/tsconfig.lib.json"
+    }
+  ],
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",

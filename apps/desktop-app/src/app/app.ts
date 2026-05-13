@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TestComponent } from '@org/shared';
 
 @Component({
-  imports: [RouterModule, TestComponent],
+  imports: [RouterModule],
   selector: 'app-root',
-  template: `
-    <div>
-      <p>Hola Mundo</p>
-      <lib-test></lib-test>
-    </div>
-  `,
+  template: ` <router-outlet /> `,
 })
 export class App {
   protected title = 'desktop-app';

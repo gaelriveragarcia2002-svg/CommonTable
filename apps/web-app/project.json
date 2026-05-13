@@ -19,7 +19,10 @@
             "input": "apps/web-app/public"
           }
         ],
-        "styles": ["apps/web-app/src/styles.css"],
+        "styles": [
+          "apps/web-app/src/styles.css",
+          "node_modules/@fortawesome/fontawesome-free/css/all.css"
+        ],
         "server": "apps/web-app/src/main.server.ts",
         "ssr": {
           "entry": "apps/web-app/src/server.ts"
@@ -90,7 +93,10 @@
             "input": "apps/web-app/public"
           }
         ],
-        "styles": ["apps/web-app/src/styles.css"]
+        "styles": [
+          "apps/web-app/src/styles.css",
+          "node_modules/@fortawesome/fontawesome-free/css/all.css"
+        ]
       },
       "configurations": {
         "production": {

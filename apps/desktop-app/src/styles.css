@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss" source("../../..");
+@import "../../../libs/core/src/lib/styles/tokens.css";
+@import "../../../libs/core/src/lib/styles/typography.css";
+@import "../../../libs/core/src/lib/styles/scrollbar.css";
+@import "../../../libs/core/src/lib/styles/utilitys.css";

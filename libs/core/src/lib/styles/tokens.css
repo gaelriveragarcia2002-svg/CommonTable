@@ -1,0 +1,130 @@
+/*  
+  Design tokens — CommonTable / Kraft & Tabaco
+  Referencias a las CSS variables generadas por PrimeNG (@primeuix/themes).
+  Fuente de verdad: libs/core/src/lib/themes/dnv.preset.ts
+
+  Uso en componentes:
+    bg-primary-500   text-info-300   border-success-600
+    bg-warn-100      text-danger-950  etc.
+
+*/
+
+@theme {
+  /* ─── Primary / Kraft ──────────────────────────────── */
+  --color-primary-50:  var(--p-primary-50);
+  --color-primary-100: var(--p-primary-100);
+  --color-primary-200: var(--p-primary-200);
+  --color-primary-300: var(--p-primary-300);
+  --color-primary-400: var(--p-primary-400);
+  --color-primary-500: var(--p-primary-500);
+  --color-primary-600: var(--p-primary-600);
+  --color-primary-700: var(--p-primary-700);
+  --color-primary-800: var(--p-primary-800);
+  --color-primary-900: var(--p-primary-900);
+  
+
+  /* ─── Info (sky) ───────────────────────────────────── */
+  --color-info-50:  var(--p-sky-50);
+  --color-info-100: var(--p-sky-100);
+  --color-info-200: var(--p-sky-200);
+  --color-info-300: var(--p-sky-300);
+  --color-info-400: var(--p-sky-400);
+  --color-info-500: var(--p-sky-500);
+  --color-info-600: var(--p-sky-600);
+  --color-info-700: var(--p-sky-700);
+  --color-info-800: var(--p-sky-800);
+  --color-info-900: var(--p-sky-900);
+  --color-info-950: var(--p-sky-950);
+
+  /* ─── Success (green) ──────────────────────────────── */
+  --color-success-50:  var(--p-green-50);
+  --color-success-100: var(--p-green-100);
+  --color-success-200: var(--p-green-200);
+  --color-success-300: var(--p-green-300);
+  --color-success-400: var(--p-green-400);
+  --color-success-500: var(--p-green-500);
+  --color-success-600: var(--p-green-600);
+  --color-success-700: var(--p-green-700);
+  --color-success-800: var(--p-green-800);
+  --color-success-900: var(--p-green-900);
+  --color-success-950: var(--p-green-950);
+
+  /* ─── Warn (orange) ────────────────────────────────── */
+  --color-warn-50:  var(--p-orange-50);
+  --color-warn-100: var(--p-orange-100);
+  --color-warn-200: var(--p-orange-200);
+  --color-warn-300: var(--p-orange-300);
+  --color-warn-400: var(--p-orange-400);
+  --color-warn-500: var(--p-orange-500);
+  --color-warn-600: var(--p-orange-600);
+  --color-warn-700: var(--p-orange-700);
+  --color-warn-800: var(--p-orange-800);
+  --color-warn-900: var(--p-orange-900);
+  --color-warn-950: var(--p-orange-950);
+
+  /* ─── Danger (red) ─────────────────────────────────── */
+  --color-danger-50:  var(--p-red-50);
+  --color-danger-100: var(--p-red-100);
+  --color-danger-200: var(--p-red-200);
+  --color-danger-300: var(--p-red-300);
+  --color-danger-400: var(--p-red-400);
+  --color-danger-500: var(--p-red-500);
+  --color-danger-600: var(--p-red-600);
+  --color-danger-700: var(--p-red-700);
+  --color-danger-800: var(--p-red-800);
+  --color-danger-900: var(--p-red-900);
+  --color-danger-950: var(--p-red-950);
+
+  /* ─── Surface / Neutros ────────────────────────────── */
+  --color-surface-0:   var(--p-surface-0);
+  --color-surface-50:  var(--p-surface-50);
+  --color-surface-100: var(--p-surface-100);
+  --color-surface-200: var(--p-surface-200);
+  --color-surface-300: var(--p-surface-300);
+  --color-surface-400: var(--p-surface-400);
+  --color-surface-500: var(--p-surface-500);
+  --color-surface-600: var(--p-surface-600);
+  --color-surface-700: var(--p-surface-700);
+  --color-surface-800: var(--p-surface-800);
+  --color-surface-900: var(--p-surface-900);
+
+  /* ─── Paper (bg base de la app) ────────────────────── */
+  --color-paper:      var(--p-surface-50);  /* #f5efe2 light · #ebe2cd dark */
+  --color-paper-warm: #ebe2cd;              /* siempre warm, independiente del tema */
+
+  /* ─── Border radius ────────────────────────────────── */
+  --radius-xs:   var(--p-border-radius-xs);   /* 2px  */
+  --radius-sm:   var(--p-border-radius-sm);   /* 4px  */
+  --radius-md:   var(--p-border-radius-md);   /* 6px  */
+  --radius-lg:   var(--p-border-radius-lg);   /* 8px  */
+  --radius-xl:   var(--p-border-radius-xl);   /* 12px */
+  --radius-full: 9999px;
+  /* uso: rounded-xs  rounded-sm  rounded-md  rounded-lg  rounded-xl  rounded-full */
+
+  /* ─── Shadows / Elevación ──────────────────────────── */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  /* uso: shadow-xs  shadow-sm  shadow-md  shadow-lg  shadow-xl */
+
+  /* ─── Z-index / Capas ──────────────────────────────── */
+  --z-index-base:     0;
+  --z-index-raised:   10;
+  --z-index-dropdown: 100;
+  --z-index-sticky:   200;
+  --z-index-overlay:  300;
+  --z-index-modal:    400;
+  --z-index-toast:    500;
+  /* uso: z-base  z-raised  z-dropdown  z-sticky  z-overlay  z-modal  z-toast */
+
+  /* ─── Transiciones ─────────────────────────────────── */
+  --transition-duration-fast:   150ms;
+  --transition-duration-base:   var(--p-transition-duration);  /* 200ms */
+  --transition-duration-slow:   400ms;
+  --transition-timing-default:  cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-timing-in:       cubic-bezier(0.4, 0, 1, 1);
+  --transition-timing-out:      cubic-bezier(0, 0, 0.2, 1);
+  /* uso: duration-fast  duration-base  duration-slow  ease-default  ease-in  ease-out */
+}

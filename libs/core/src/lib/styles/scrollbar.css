@@ -1,0 +1,52 @@
+/* Tu @import de Tailwind, @theme, @layer base, etc. arriba */
+
+/* AL FINAL del archivo, FUERA de cualquier @layer */
+/* AL FINAL del archivo, FUERA de cualquier @layer */
+
+html {
+  overflow-y: scroll;
+}
+
+/* Scrollbar principal */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+}
+
+/* Track transparente para integrarse con el fondo */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Thumb sutil con el color de superficie */
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-surface-300);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover — usa primary para feedback de marca */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary-500);
+  background-clip: content-box;
+}
+
+/* Active (mientras lo arrastras) — primary más oscuro */
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--color-primary-700);
+  background-clip: content-box;
+}
+
+/* Esquina (cuando hay scroll horizontal y vertical juntos) */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-300) transparent;
+}
